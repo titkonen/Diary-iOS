@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="Paivays" representedClassName="Paivays" syncable="YES">
+        <attribute name="paivays" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="tekstit" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Tekstit" inverseName="paivaykset" inverseEntity="Tekstit"/>
+    </entity>
+    <entity name="Tekstit" representedClassName="Tekstit" syncable="YES">
+        <attribute name="leipateksti" optional="YES" attributeType="String"/>
+        <attribute name="otsikko" optional="YES" attributeType="String"/>
+        <attribute name="valokuva" optional="YES" attributeType="Binary"/>
+        <relationship name="paivaykset" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Paivays" inverseName="tekstit" inverseEntity="Paivays"/>
+    </entity>
+    <elements>
+        <element name="Tekstit" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="Paivays" positionX="317.2353515625" positionY="105.6997680664062" width="128" height="73"/>
+    </elements>
 </model>
