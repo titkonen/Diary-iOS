@@ -4,6 +4,7 @@ import CoreData
 class DiaryListVC: UITableViewController {
 
     // MARK: - Properties
+    lazy var coreDataStack = CoreDataStack(modelName: "DiaryModel")
     var diaryentity = [DiaryEntity]()
     lazy var paivanMuotoilu: DateFormatter = {
       let formatter = DateFormatter()
@@ -13,7 +14,7 @@ class DiaryListVC: UITableViewController {
     }()
     
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext // Context Layer
+    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext // Context Layer
     
     // MARK: - View Cycle
     override func viewDidLoad() {
@@ -22,14 +23,16 @@ class DiaryListVC: UITableViewController {
         title = "The Diary 2"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
-        loadTrails()
+        let lataaData: NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
        
+        do {
+            let latausTulos = try coreDataStack.managedContext.fetch(lataaData)
+            diaryentity = latausTulos
+        } catch let error as NSError {
+          print("Fetch error: \(error) description: \(error.userInfo)")
+        }
     }
   
-    //
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//    }
 
     // MARK: - Table view data source
 
@@ -60,54 +63,54 @@ class DiaryListVC: UITableViewController {
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
-        var textField = UITextField()
-        let alert = UIAlertController(title: "Add New text", message: "leipiszz", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newDiaryContent = DiaryEntity(context: self.context)
-            newDiaryContent.otsikko = textField.text!
-            newDiaryContent.paivamaara = Date()
-            self.diaryentity.append(newDiaryContent)
-            self.saveTrails()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addAction(action)
-        alert.addAction(cancelAction)
-        
-        alert.addTextField { (field) in
-            textField = field
-            textField.placeholder = "Add a new text"
-        }
-        present(alert, animated: true, completion: nil)
+//        var textField = UITextField()
+//        let alert = UIAlertController(title: "Add New text", message: "leipiszz", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+//            let newDiaryContent = DiaryEntity(context: self.context)
+//            newDiaryContent.otsikko = textField.text!
+//            newDiaryContent.paivamaara = Date()
+//            self.diaryentity.append(newDiaryContent)
+//            self.saveTrails()
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+//
+//        alert.addAction(action)
+//        alert.addAction(cancelAction)
+//
+//        alert.addTextField { (field) in
+//            textField = field
+//            textField.placeholder = "Add a new text"
+//        }
+//        present(alert, animated: true, completion: nil)
         
     }
     
-    // MARK: - CRUD SAVE
-    func saveTrails() {
-        
-         do {
-            try context.save()
-         } catch {
-            print("Error saving context \(error)")
-         }
-         tableView.reloadData()
-    }
-    
-    // MARK: - CRUD LOAD
-    func loadTrails() {
-        
-        let request : NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: #keyPath(DiaryEntity.paivamaara), ascending: false)
-        request.sortDescriptors = [sortDescriptor]
-        
-        do {
-            diaryentity = try context.fetch(request)
-        } catch {
-            print("Error Fetching data from context \(error)")
-        }
-        tableView.reloadData()
-    }
+//    // MARK: - CRUD SAVE
+//    func saveTrails() {
+//
+//         do {
+//            try context.save()
+//         } catch {
+//            print("Error saving context \(error)")
+//         }
+//         tableView.reloadData()
+//    }
+//
+//    // MARK: - CRUD LOAD
+//    func loadTrails() {
+//
+//        let request : NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
+//        let sortDescriptor = NSSortDescriptor(key: #keyPath(DiaryEntity.paivamaara), ascending: false)
+//        request.sortDescriptors = [sortDescriptor]
+//
+//        do {
+//            diaryentity = try context.fetch(request)
+//        } catch {
+//            print("Error Fetching data from context \(error)")
+//        }
+//        tableView.reloadData()
+//    }
 
     
 
