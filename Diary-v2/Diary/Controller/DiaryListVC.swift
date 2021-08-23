@@ -13,10 +13,9 @@ class DiaryListVC: UITableViewController {
       return formatter
     }()
     
-    
     //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext // Context Layer
     
-    // MARK: - View Cycle
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +30,7 @@ class DiaryListVC: UITableViewController {
         } catch let error as NSError {
           print("Fetch error: \(error) description: \(error.userInfo)")
         }
+        
     }
   
 
@@ -41,7 +41,6 @@ class DiaryListVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let aika = String(duration)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SavedTrailsCell", for: indexPath)
 
@@ -62,27 +61,41 @@ class DiaryListVC: UITableViewController {
     // MARK: - Add New text
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+       
         
-//        var textField = UITextField()
-//        let alert = UIAlertController(title: "Add New text", message: "leipiszz", preferredStyle: .alert)
-//        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-//            let newDiaryContent = DiaryEntity(context: self.context)
-//            newDiaryContent.otsikko = textField.text!
-//            newDiaryContent.paivamaara = Date()
-//            self.diaryentity.append(newDiaryContent)
-//            self.saveTrails()
-//        }
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-//
-//        alert.addAction(action)
-//        alert.addAction(cancelAction)
-//
-//        alert.addTextField { (field) in
-//            textField = field
-//            textField.placeholder = "Add a new text"
-//        }
-//        present(alert, animated: true, completion: nil)
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add New text", message: "leipiszz", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            
+            guard self.coreDataStack.managedContext != nil else {
+                    fatalError("No Managed Object Context Available")
+                }
+            
+            let newDiaryContent = DiaryEntity(context: self.coreDataStack.managedContext)
+            newDiaryContent.otsikko = textField.text!
+            newDiaryContent.paivamaara = Date()
+            
+            do {
+                try self.coreDataStack.managedContext.save()
+            } catch let error as NSError {
+                print("Error saving context \(error)")
+            }
+
+            // Reload table view
+            self.tableView.reloadData()
+            
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+        alert.addAction(action)
+        alert.addAction(cancelAction)
+
+        alert.addTextField { (field) in
+            textField = field
+            textField.placeholder = "Add a new text"
+        }
+        present(alert, animated: true, completion: nil)
         
     }
     
