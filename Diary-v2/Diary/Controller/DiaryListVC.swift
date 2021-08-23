@@ -19,13 +19,14 @@ class DiaryListVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        title = "The List"
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-//
+        title = "The Diary 2"
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+
         loadTrails()
+       
     }
   
-    // TEST THIS LATER FOR FETCHING
+    //
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //    }
@@ -41,14 +42,14 @@ class DiaryListVC: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SavedTrailsCell", for: indexPath)
 
-        guard let kavely = diaryentity[indexPath.row] as? DiaryEntity,
-          let walkDate = kavely.paivamaara as Date? else {
+        guard let showDate = diaryentity[indexPath.row] as? DiaryEntity,
+          let showDateinList = showDate.paivamaara as Date? else {
             return cell
         }
         
         cell.textLabel?.text = diaryentity[indexPath.row].otsikko
         
-        cell.detailTextLabel?.text = paivanMuotoilu.string(from: walkDate)
+        cell.detailTextLabel?.text = paivanMuotoilu.string(from: showDateinList)
         
         //cell.detailTextLabel?.text = String(diaryentity[indexPath.row].luku)
         return cell
@@ -97,6 +98,8 @@ class DiaryListVC: UITableViewController {
     func loadTrails() {
         
         let request : NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(DiaryEntity.paivamaara), ascending: false)
+        request.sortDescriptors = [sortDescriptor]
         
         do {
             diaryentity = try context.fetch(request)
