@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Trailhero-trails
-//
-//  Created by Toni Itkonen on 19.6.2021.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

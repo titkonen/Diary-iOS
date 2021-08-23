@@ -10,18 +10,10 @@
 		0F2DA6C02684515D00AAFB9D /* DiaryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2DA6BF2684515D00AAFB9D /* DiaryListVC.swift */; };
 		0F423CE7267E10B500C01178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F423CE6267E10B500C01178 /* AppDelegate.swift */; };
 		0F423CE9267E10B500C01178 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F423CE8267E10B500C01178 /* SceneDelegate.swift */; };
-		0F423CEB267E10B500C01178 /* NewTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F423CEA267E10B500C01178 /* NewTrackingViewController.swift */; };
 		0F423CEE267E10B500C01178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F423CEC267E10B500C01178 /* Main.storyboard */; };
-		0F423CF1267E10B500C01178 /* Trailhero_trails.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F423CEF267E10B500C01178 /* Trailhero_trails.xcdatamodeld */; };
 		0F423CF3267E10B900C01178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F423CF2267E10B900C01178 /* Assets.xcassets */; };
 		0F423CF6267E10B900C01178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F423CF4267E10B900C01178 /* LaunchScreen.storyboard */; };
-		0F423D01267E10B900C01178 /* Trailhero_trailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F423D00267E10B900C01178 /* Trailhero_trailsTests.swift */; };
-		0F423D0C267E10B900C01178 /* Trailhero_trailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F423D0B267E10B900C01178 /* Trailhero_trailsUITests.swift */; };
 		0F54178026D1348800823CFD /* DiaryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F54177E26D1348800823CFD /* DiaryModel.xcdatamodeld */; };
-		0F79129B268A1E4B0069C454 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F79129A268A1E4B0069C454 /* LocationManager.swift */; };
-		0F79129D268A1FFF0069C454 /* UnitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F79129C268A1FFF0069C454 /* UnitExtensions.swift */; };
-		0F79129F268A20300069C454 /* MulticolorPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F79129E268A20300069C454 /* MulticolorPolyline.swift */; };
-		0FD7C0312683420200FC3CFE /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD7C0302683420200FC3CFE /* FormatDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,23 +38,13 @@
 		0F423CE3267E10B500C01178 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F423CE6267E10B500C01178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F423CE8267E10B500C01178 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0F423CEA267E10B500C01178 /* NewTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackingViewController.swift; sourceTree = "<group>"; };
 		0F423CED267E10B500C01178 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0F423CF0267E10B500C01178 /* Trailhero_trails.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trailhero_trails.xcdatamodel; sourceTree = "<group>"; };
 		0F423CF2267E10B900C01178 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F423CF5267E10B900C01178 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F423CF7267E10B900C01178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F423CFC267E10B900C01178 /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F423D00267E10B900C01178 /* Trailhero_trailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailhero_trailsTests.swift; sourceTree = "<group>"; };
-		0F423D02267E10B900C01178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F423D07267E10B900C01178 /* DiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F423D0B267E10B900C01178 /* Trailhero_trailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailhero_trailsUITests.swift; sourceTree = "<group>"; };
-		0F423D0D267E10B900C01178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F54177F26D1348800823CFD /* DiaryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DiaryModel.xcdatamodel; sourceTree = "<group>"; };
-		0F79129A268A1E4B0069C454 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		0F79129C268A1FFF0069C454 /* UnitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitExtensions.swift; sourceTree = "<group>"; };
-		0F79129E268A20300069C454 /* MulticolorPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticolorPolyline.swift; sourceTree = "<group>"; };
-		0FD7C0302683420200FC3CFE /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				0F423CE5267E10B500C01178 /* Diary */,
-				0F423CFF267E10B900C01178 /* DiaryTests */,
-				0F423D0A267E10B900C01178 /* DiaryUITests */,
 				0F423CE4267E10B500C01178 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -122,28 +102,9 @@
 			path = Diary;
 			sourceTree = "<group>";
 		};
-		0F423CFF267E10B900C01178 /* DiaryTests */ = {
-			isa = PBXGroup;
-			children = (
-				0F423D00267E10B900C01178 /* Trailhero_trailsTests.swift */,
-				0F423D02267E10B900C01178 /* Info.plist */,
-			);
-			path = DiaryTests;
-			sourceTree = "<group>";
-		};
-		0F423D0A267E10B900C01178 /* DiaryUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0F423D0B267E10B900C01178 /* Trailhero_trailsUITests.swift */,
-				0F423D0D267E10B900C01178 /* Info.plist */,
-			);
-			path = DiaryUITests;
-			sourceTree = "<group>";
-		};
 		0F423D19267E127E00C01178 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0F423CEF267E10B500C01178 /* Trailhero_trails.xcdatamodeld */,
 				0F54177E26D1348800823CFD /* DiaryModel.xcdatamodeld */,
 			);
 			path = Model;
@@ -160,7 +121,6 @@
 		0F423D1B267E128E00C01178 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0F423CEA267E10B500C01178 /* NewTrackingViewController.swift */,
 				0F2DA6BF2684515D00AAFB9D /* DiaryListVC.swift */,
 			);
 			path = Controller;
@@ -173,10 +133,6 @@
 				0F423CF2267E10B900C01178 /* Assets.xcassets */,
 				0F423CF4267E10B900C01178 /* LaunchScreen.storyboard */,
 				0F423CE8267E10B500C01178 /* SceneDelegate.swift */,
-				0FD7C0302683420200FC3CFE /* FormatDisplay.swift */,
-				0F79129A268A1E4B0069C454 /* LocationManager.swift */,
-				0F79129C268A1FFF0069C454 /* UnitExtensions.swift */,
-				0F79129E268A20300069C454 /* MulticolorPolyline.swift */,
 			);
 			path = "Support files";
 			sourceTree = "<group>";
@@ -311,16 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F423CEB267E10B500C01178 /* NewTrackingViewController.swift in Sources */,
 				0F2DA6C02684515D00AAFB9D /* DiaryListVC.swift in Sources */,
-				0F423CF1267E10B500C01178 /* Trailhero_trails.xcdatamodeld in Sources */,
-				0F79129B268A1E4B0069C454 /* LocationManager.swift in Sources */,
 				0F423CE7267E10B500C01178 /* AppDelegate.swift in Sources */,
-				0FD7C0312683420200FC3CFE /* FormatDisplay.swift in Sources */,
 				0F423CE9267E10B500C01178 /* SceneDelegate.swift in Sources */,
 				0F54178026D1348800823CFD /* DiaryModel.xcdatamodeld in Sources */,
-				0F79129D268A1FFF0069C454 /* UnitExtensions.swift in Sources */,
-				0F79129F268A20300069C454 /* MulticolorPolyline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +278,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F423D01267E10B900C01178 /* Trailhero_trailsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +285,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F423D0C267E10B900C01178 /* Trailhero_trailsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,16 +603,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0F423CEF267E10B500C01178 /* Trailhero_trails.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0F423CF0267E10B500C01178 /* Trailhero_trails.xcdatamodel */,
-			);
-			currentVersion = 0F423CF0267E10B500C01178 /* Trailhero_trails.xcdatamodel */;
-			path = Trailhero_trails.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		0F54177E26D1348800823CFD /* DiaryModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

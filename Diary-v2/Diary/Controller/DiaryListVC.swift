@@ -83,10 +83,9 @@ class DiaryListVC: UITableViewController {
         
     }
     
-    // MARK: - CRUD Functions
-    
+    // MARK: - CRUD SAVE
     func saveTrails() {
-         
+        
          do {
             try context.save()
          } catch {
@@ -95,6 +94,7 @@ class DiaryListVC: UITableViewController {
          tableView.reloadData()
     }
     
+    // MARK: - CRUD LOAD
     func loadTrails() {
         
         let request : NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
@@ -112,4 +112,4 @@ class DiaryListVC: UITableViewController {
     
 
    
-}
+} // End of main class
