@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class SavedTrailsViewController: UITableViewController {
+class DiaryListVC: UITableViewController {
 
     var diaryentity = [DiaryEntity]()
     

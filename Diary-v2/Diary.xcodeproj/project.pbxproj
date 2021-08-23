@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F2DA6C02684515D00AAFB9D /* SavedTrailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2DA6BF2684515D00AAFB9D /* SavedTrailsViewController.swift */; };
+		0F2DA6C02684515D00AAFB9D /* DiaryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2DA6BF2684515D00AAFB9D /* DiaryListVC.swift */; };
 		0F423CE7267E10B500C01178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F423CE6267E10B500C01178 /* AppDelegate.swift */; };
 		0F423CE9267E10B500C01178 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F423CE8267E10B500C01178 /* SceneDelegate.swift */; };
 		0F423CEB267E10B500C01178 /* NewTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F423CEA267E10B500C01178 /* NewTrackingViewController.swift */; };
@@ -42,7 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F2DA6BF2684515D00AAFB9D /* SavedTrailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrailsViewController.swift; sourceTree = "<group>"; };
+		0F2DA6BF2684515D00AAFB9D /* DiaryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryListVC.swift; sourceTree = "<group>"; };
 		0F423CE3267E10B500C01178 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F423CE6267E10B500C01178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F423CE8267E10B500C01178 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				0F423CEA267E10B500C01178 /* NewTrackingViewController.swift */,
-				0F2DA6BF2684515D00AAFB9D /* SavedTrailsViewController.swift */,
+				0F2DA6BF2684515D00AAFB9D /* DiaryListVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F423CEB267E10B500C01178 /* NewTrackingViewController.swift in Sources */,
-				0F2DA6C02684515D00AAFB9D /* SavedTrailsViewController.swift in Sources */,
+				0F2DA6C02684515D00AAFB9D /* DiaryListVC.swift in Sources */,
 				0F423CF1267E10B500C01178 /* Trailhero_trails.xcdatamodeld in Sources */,
 				0F79129B268A1E4B0069C454 /* LocationManager.swift in Sources */,
 				0F423CE7267E10B500C01178 /* AppDelegate.swift in Sources */,
