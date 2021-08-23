@@ -10,8 +10,16 @@ class SavedTrailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        title = "The List"
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+//
         loadTrails()
     }
+  
+    // TEST THIS LATER FOR FETCHING
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//    }
 
     // MARK: - Table view data source
 
@@ -42,7 +50,12 @@ class SavedTrailsViewController: UITableViewController {
             self.diaryentity.append(newTrails)
             self.saveTrails()
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
         alert.addAction(action)
+        alert.addAction(cancelAction)
+        
         alert.addTextField { (field) in
             textField = field
             textField.placeholder = "Add a new text"
