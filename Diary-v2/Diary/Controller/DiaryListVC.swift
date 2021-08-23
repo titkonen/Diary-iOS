@@ -3,10 +3,19 @@ import CoreData
 
 class DiaryListVC: UITableViewController {
 
+    // MARK: - Properties
     var diaryentity = [DiaryEntity]()
+    lazy var paivanMuotoilu: DateFormatter = {
+      let formatter = DateFormatter()
+      formatter.dateStyle = .short
+      formatter.timeStyle = .medium
+      return formatter
+    }()
+    
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext // Context Layer
     
+    // MARK: - View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,8 +41,16 @@ class DiaryListVC: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SavedTrailsCell", for: indexPath)
 
+        guard let kavely = diaryentity[indexPath.row] as? DiaryEntity,
+          let walkDate = kavely.paivamaara as Date? else {
+            return cell
+        }
+        
         cell.textLabel?.text = diaryentity[indexPath.row].otsikko
-        cell.detailTextLabel?.text = String(diaryentity[indexPath.row].luku)
+        
+        cell.detailTextLabel?.text = paivanMuotoilu.string(from: walkDate)
+        
+        //cell.detailTextLabel?.text = String(diaryentity[indexPath.row].luku)
         return cell
     }
  
@@ -45,9 +62,10 @@ class DiaryListVC: UITableViewController {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New text", message: "leipiszz", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newTrails = DiaryEntity(context: self.context)
-            newTrails.otsikko = textField.text!
-            self.diaryentity.append(newTrails)
+            let newDiaryContent = DiaryEntity(context: self.context)
+            newDiaryContent.otsikko = textField.text!
+            newDiaryContent.paivamaara = Date()
+            self.diaryentity.append(newDiaryContent)
             self.saveTrails()
         }
         
