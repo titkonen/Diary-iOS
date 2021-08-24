@@ -25,14 +25,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Ev-gE-Uf7">
-                                            <rect key="frame" x="20" y="10" width="38" height="24"/>
+                                            <rect key="frame" x="20" y="10" width="33" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ntd-VI-gKu">
-                                            <rect key="frame" x="20" y="34" width="40.5" height="13.5"/>
+                                            <rect key="frame" x="20" y="32.5" width="40.5" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <nil key="textColor"/>
@@ -48,6 +48,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Diary" id="HGg-lo-31l">
+                        <barButtonItem key="leftBarButtonItem" title="Lisää temp" id="12b-CZ-7wf">
+                            <connections>
+                                <action selector="addName:" destination="hJ3-Xx-3mQ" id="eT0-os-fdJ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vBu-8z-9Iw">
                             <connections>
                                 <action selector="addButtonPressed:" destination="hJ3-Xx-3mQ" id="9jk-yZ-QBK"/>

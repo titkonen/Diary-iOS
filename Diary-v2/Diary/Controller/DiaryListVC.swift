@@ -14,28 +14,44 @@ class DiaryListVC: UITableViewController {
     }()
     
     //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext // Context Layer
-    
+
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "The Diary 2"
+        
+        title = "The Diary 2.2"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        //tableView.delegate = self
+        //tableView.dataSource = self
+        
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         let lataaData: NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
-       
-        do {
-            let latausTulos = try coreDataStack.managedContext.fetch(lataaData)
-            diaryentity = latausTulos
-        } catch let error as NSError {
-          print("Fetch error: \(error) description: \(error.userInfo)")
-        }
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(DiaryEntity.paivamaara), ascending: false)
+        lataaData.sortDescriptors = [sortDescriptor]
         
+//        do {
+//            let latausTulos = try coreDataStack.managedContext.fetch(lataaData)
+//            diaryentity = latausTulos
+//        } catch let error as NSError {
+//          print("Fetch error: \(error) description: \(error.userInfo)")
+//        }
+        
+        do {
+            diaryentity = try coreDataStack.managedContext.fetch(lataaData)
+        } catch let error as NSError {
+          print("Could not fetch. \(error), \(error.userInfo)")
+        }
+
     }
   
 
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return diaryentity.count
     }
@@ -50,26 +66,40 @@ class DiaryListVC: UITableViewController {
         }
         
         cell.textLabel?.text = diaryentity[indexPath.row].otsikko
-        
         cell.detailTextLabel?.text = paivanMuotoilu.string(from: showDateinList)
-        
         //cell.detailTextLabel?.text = String(diaryentity[indexPath.row].luku)
         return cell
     }
  
+    // MARK: DELETING
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+      true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+      guard let contentToRemove = diaryentity[indexPath.row] as? DiaryEntity, editingStyle == .delete else {
+          return
+      }
+        
+      //when delete is tapped
+      diaryentity.remove(at: indexPath.row)
+
+      coreDataStack.managedContext.delete(contentToRemove)
+      coreDataStack.saveContext()
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
 
     // MARK: - Add New text
-    
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
        
-        
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New text", message: "leipiszz", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             
-            guard self.coreDataStack.managedContext != nil else {
-                    fatalError("No Managed Object Context Available")
-                }
+//            guard self.coreDataStack.managedContext != nil else {
+//                    fatalError("No Managed Object Context Available")
+//                }
             
             let newDiaryContent = DiaryEntity(context: self.coreDataStack.managedContext)
             newDiaryContent.otsikko = textField.text!
@@ -80,12 +110,13 @@ class DiaryListVC: UITableViewController {
             } catch let error as NSError {
                 print("Error saving context \(error)")
             }
-
-            // Reload table view
+            
+            // Save and Reload table view
+            self.coreDataStack.saveContext()
             self.tableView.reloadData()
             
         }
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
         alert.addAction(action)
@@ -96,36 +127,7 @@ class DiaryListVC: UITableViewController {
             textField.placeholder = "Add a new text"
         }
         present(alert, animated: true, completion: nil)
-        
+
     }
     
-//    // MARK: - CRUD SAVE
-//    func saveTrails() {
-//
-//         do {
-//            try context.save()
-//         } catch {
-//            print("Error saving context \(error)")
-//         }
-//         tableView.reloadData()
-//    }
-//
-//    // MARK: - CRUD LOAD
-//    func loadTrails() {
-//
-//        let request : NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
-//        let sortDescriptor = NSSortDescriptor(key: #keyPath(DiaryEntity.paivamaara), ascending: false)
-//        request.sortDescriptors = [sortDescriptor]
-//
-//        do {
-//            diaryentity = try context.fetch(request)
-//        } catch {
-//            print("Error Fetching data from context \(error)")
-//        }
-//        tableView.reloadData()
-//    }
-
-    
-
-   
 } // End of main class
