@@ -3,7 +3,11 @@ import CoreData
 
 class DiaryListVC: UITableViewController {
 
+    // MARK: - IBOutlets
+    //@IBOutlet var tableView: UITableView!
+    
     // MARK: - Properties
+
     lazy var coreDataStack = CoreDataStack(modelName: "DiaryModel")
     var diaryentity = [DiaryEntity]()
     lazy var paivanMuotoilu: DateFormatter = {
@@ -25,7 +29,7 @@ class DiaryListVC: UITableViewController {
         //tableView.delegate = self
         //tableView.dataSource = self
         
-        tableView.reloadData()
+        //tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -17,6 +17,7 @@
 		0F423CF3267E10B900C01178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F423CF2267E10B900C01178 /* Assets.xcassets */; };
 		0F423CF6267E10B900C01178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F423CF4267E10B900C01178 /* LaunchScreen.storyboard */; };
 		0F54178026D1348800823CFD /* DiaryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F54177E26D1348800823CFD /* DiaryModel.xcdatamodeld */; };
+		0F9C657726D4FFD6009C7F6E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C657626D4FFD6009C7F6E /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		0F423CFC267E10B900C01178 /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F423D07267E10B900C01178 /* DiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F54177F26D1348800823CFD /* DiaryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DiaryModel.xcdatamodel; sourceTree = "<group>"; };
+		0F9C657626D4FFD6009C7F6E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				0F2DA6BF2684515D00AAFB9D /* DiaryListVC.swift */,
+				0F9C657626D4FFD6009C7F6E /* ListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				0F2DA6C02684515D00AAFB9D /* DiaryListVC.swift in Sources */,
 				0F423CE7267E10B500C01178 /* AppDelegate.swift in Sources */,
 				0F423CE9267E10B500C01178 /* SceneDelegate.swift in Sources */,
+				0F9C657726D4FFD6009C7F6E /* ListViewController.swift in Sources */,
 				0F54178026D1348800823CFD /* DiaryModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
