@@ -1,6 +1,10 @@
 import Foundation
 import CoreData
 
+protocol UsesCoreDataObjects: class {
+  var managedObjectContext: NSManagedObjectContext? { get set }
+}
+
 class CoreDataStack {
   private let modelName: String
   

@@ -16,23 +16,43 @@ class ListViewController: UIViewController {
       return formatter
     }()
     
+//    lazy var notes: NSFetchedResultsController<DiaryEntity> = {
+//      let context = coreDataStack.managedContext
+//      let request: NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
+//      request.sortDescriptors = [NSSortDescriptor(key: #keyPath(DiaryEntity.paivamaara), ascending: false)]
+//
+//      let notes = NSFetchedResultsController(
+//        fetchRequest: request,
+//        managedObjectContext: context,
+//        sectionNameKeyPath: nil,
+//        cacheName: nil)
+//        notes.delegate = self
+//      return notes
+//    }()
+    
     
     // MARK: - Add Life Cycle
     override func viewDidLoad() {
       super.viewDidLoad()
-      
-      title = "The List2.1"
+
+      title = "The List2.2"
       tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+//        do {
+//          try viestit.performFetch()
+//        } catch {
+//          print("Error: \(error)")
+//        }
+        
         let lataaData: NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: #keyPath(DiaryEntity.paivamaara), ascending: false)
         lataaData.sortDescriptors = [sortDescriptor]
-        
+
         do {
           diaryentity = try coreDataStack.managedContext.fetch(lataaData)
         } catch let error as NSError {
@@ -84,15 +104,24 @@ class ListViewController: UIViewController {
         
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+//        if let navController = segue.destination as? UINavigationController,
+//          let viewController = navController.topViewController as? UsesCoreDataObjects {
+//            viewController.managedObjectContext = coreDataStack.managedContext //stack.savingContext
+//        }
+//
+//        if let detailView = segue.destination as? NoteDisplayable,
+//          let selectedIndex = tableView.indexPathForSelectedRow {
+//            detailView.note = notes.object(at: selectedIndex)
+//        }
     }
-    */
+    
 
 } // End of Main class
 
@@ -102,6 +131,8 @@ extension ListViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return diaryentity.count
+//    let objects = notes.fetchedObjects
+//    return objects?.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -140,4 +171,28 @@ extension ListViewController: UITableViewDataSource {
     }
     
     
-} // End of Extensions
+} // End of Extensions 1
+
+// MARK: - NSFetchedResultsControllerDelegate
+extension ListViewController: NSFetchedResultsControllerDelegate {
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+  }
+
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    let wrapIndexPath: (IndexPath?) -> [IndexPath] = { $0.map { [$0] } ?? [] }
+
+    switch type {
+    case .insert:
+      tableView.insertRows(at: wrapIndexPath(newIndexPath), with: .automatic)
+    case .delete:
+      tableView.deleteRows(at: wrapIndexPath(indexPath), with: .automatic)
+    case .update:
+      tableView.reloadRows(at: wrapIndexPath(indexPath), with: .none)
+    default:
+      break
+    }
+  }
+
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+  }
+}
