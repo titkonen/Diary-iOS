@@ -12,42 +12,7 @@
         <scene sceneID="ZmP-M2-kDw">
             <objects>
                 <tableViewController id="hJ3-Xx-3mQ" userLabel="SavedTrails" customClass="DiaryListVC" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HWp-vy-KSj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="SavedTrailsCell" textLabel="9Ev-gE-Uf7" detailTextLabel="ntd-VI-gKu" style="IBUITableViewCellStyleSubtitle" id="0lv-Ho-nHU">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="56.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0lv-Ho-nHU" id="ixr-3m-PLd">
-                                    <rect key="frame" x="0.0" y="0.0" width="373.5" height="56.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Ev-gE-Uf7">
-                                            <rect key="frame" x="20" y="10" width="33" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ntd-VI-gKu">
-                                            <rect key="frame" x="20" y="32.5" width="40.5" height="13.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="hJ3-Xx-3mQ" id="bzy-AR-0Q4"/>
-                            <outlet property="delegate" destination="hJ3-Xx-3mQ" id="DgA-Q4-WJF"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Diary" id="HGg-lo-31l">
+                    <navigationItem key="navigationItem" title="empty" id="HGg-lo-31l">
                         <barButtonItem key="leftBarButtonItem" title="Lisää temp" id="12b-CZ-7wf">
                             <connections>
                                 <action selector="addName:" destination="hJ3-Xx-3mQ" id="eT0-os-fdJ"/>
@@ -59,19 +24,16 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="HWp-vy-KSj" id="f7Y-1q-Gd2"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Arr-zb-6dP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1248" y="836"/>
         </scene>
-        <!--Diary-->
+        <!--Profile-->
         <scene sceneID="I7j-Yd-pBD">
             <objects>
                 <navigationController id="rg1-Ug-Y3T" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Diary" image="list.bullet" catalog="system" id="gk5-EQ-jdX"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="info.circle" catalog="system" id="gk5-EQ-jdX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="JsZ-lW-ykr">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -219,19 +181,19 @@
                         <color key="selectedImageTintColor" systemColor="systemBlueColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="rg1-Ug-Y3T" kind="relationship" relationship="viewControllers" id="Feg-PC-01n"/>
                         <segue destination="Y8i-qD-VFL" kind="relationship" relationship="viewControllers" id="i63-bL-KrU"/>
+                        <segue destination="rg1-Ug-Y3T" kind="relationship" relationship="viewControllers" id="Feg-PC-01n"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M0p-Nc-tep" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="320" y="-286"/>
         </scene>
-        <!--Settings-->
+        <!--Diary list-->
         <scene sceneID="xsd-kP-geg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y8i-qD-VFL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="QyW-zA-PSI"/>
+                    <tabBarItem key="tabBarItem" title="Diary list" image="list.bullet" catalog="system" id="QyW-zA-PSI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="j8r-dt-qHR">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -248,7 +210,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

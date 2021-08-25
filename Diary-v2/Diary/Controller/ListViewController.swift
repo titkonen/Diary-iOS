@@ -35,7 +35,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
       super.viewDidLoad()
 
-      title = "The List2.2"
+      title = "Diary 2.3"
       tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
     }
