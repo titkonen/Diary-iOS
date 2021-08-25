@@ -13,14 +13,21 @@ class DiaryDetailViewController: UIViewController, NoteDisplayable {
       }
     }
     
+    /// The username property that goes into the label
+    var username:String = ""
+    
     // MARK: - IBOutlets
     @IBOutlet weak var titleField: UILabel!
     @IBOutlet weak var bodyField: UITextView!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
       
+        // Set the label text
+        usernameLabel?.text = username
+        
         updateDiaryContent()
     }
     

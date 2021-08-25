@@ -107,19 +107,15 @@ class ListViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-//        if let navController = segue.destination as? UINavigationController,
-//          let viewController = navController.topViewController as? UsesCoreDataObjects {
-//            viewController.managedObjectContext = coreDataStack.managedContext //stack.savingContext
-//        }
-//
-//        if let detailView = segue.destination as? NoteDisplayable,
-//          let selectedIndex = tableView.indexPathForSelectedRow {
-//            detailView.note = notes.object(at: selectedIndex)
-//        }
+        
+        // Determine what the segue destination is
+        if segue.destination is DiaryDetailViewController {
+            let vc = segue.destination as? DiaryDetailViewController
+            vc?.username = "Arthur Dent 22"
+        }
     }
     
 

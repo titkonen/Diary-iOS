@@ -186,6 +186,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tf4-wX-sXo">
+                                <rect key="frame" x="32" y="165" width="176" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="K71-Y2-0DU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -194,6 +201,7 @@
                     <connections>
                         <outlet property="bodyField" destination="5Xk-Nw-zsY" id="Jl9-ad-zre"/>
                         <outlet property="titleField" destination="p8m-RV-8wO" id="GRC-pk-Hyx"/>
+                        <outlet property="usernameLabel" destination="Tf4-wX-sXo" id="Gkv-6u-vCq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B2Y-WF-NP5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -225,8 +233,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y8i-qD-VFL" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="QyW-zA-PSI"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="j8r-dt-qHR">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="j8r-dt-qHR">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
