@@ -1,20 +1,14 @@
 import UIKit
 
-protocol NoteDisplayable: class {
-  var note: Note? { get set }
-}
-
-class DiaryDetailViewController: UIViewController, NoteDisplayable {
+class DiaryDetailViewController: UIViewController {
     
     // MARK: - Properties
-    var note: Note? {
-      didSet {
-        updateDiaryContent()
-      }
-    }
+    var username: String = ""
+    var otsikkoName: String = ""
+    var otsikko: String?
+    var paivanNimi = Date()
     
-    /// The username property that goes into the label
-    var username:String = ""
+    var selectedContact = DiaryEntity()
     
     // MARK: - IBOutlets
     @IBOutlet weak var titleField: UILabel!
@@ -22,26 +16,15 @@ class DiaryDetailViewController: UIViewController, NoteDisplayable {
     @IBOutlet weak var usernameLabel: UILabel!
     
     // MARK: - View Life Cycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-      
-        // Set the label text
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //titleField?.text = otsikkoName
+        titleField.text = selectedContact.otsikko
         usernameLabel?.text = username
         
-        updateDiaryContent()
+        
     }
     
 } // End of class
 
-// MARK: - Internal
-extension DiaryDetailViewController {
-  func updateDiaryContent() {
-    guard isViewLoaded,
-      let note = note else {
-        return
-    }
-
-    titleField.text = note.otsikko
-    bodyField.text = note.leipateksti
-  }
-}

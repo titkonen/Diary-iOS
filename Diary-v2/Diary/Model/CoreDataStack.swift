@@ -6,7 +6,8 @@ protocol UsesCoreDataObjects: class {
 }
 
 class CoreDataStack {
-  private let modelName: String
+  
+    private let modelName: String
   
   lazy var managedContext: NSManagedObjectContext = {
     return self.storeContainer.viewContext

@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
     // MARK: - IB Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -15,21 +15,9 @@ class ListViewController: UIViewController {
       formatter.timeStyle = .medium
       return formatter
     }()
-    
-//    lazy var notes: NSFetchedResultsController<DiaryEntity> = {
-//      let context = coreDataStack.managedContext
-//      let request: NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
-//      request.sortDescriptors = [NSSortDescriptor(key: #keyPath(DiaryEntity.paivamaara), ascending: false)]
-//
-//      let notes = NSFetchedResultsController(
-//        fetchRequest: request,
-//        managedObjectContext: context,
-//        sectionNameKeyPath: nil,
-//        cacheName: nil)
-//        notes.delegate = self
-//      return notes
-//    }()
-    
+
+    var allContacts: [DiaryEntity] = []
+
     
     // MARK: - Add Life Cycle
     override func viewDidLoad() {
@@ -42,12 +30,6 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-//        do {
-//          try viestit.performFetch()
-//        } catch {
-//          print("Error: \(error)")
-//        }
         
         let lataaData: NSFetchRequest<DiaryEntity> = DiaryEntity.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: #keyPath(DiaryEntity.paivamaara), ascending: false)
@@ -63,14 +45,9 @@ class ListViewController: UIViewController {
     
 
     // MARK: - IB Actions
-    
     @IBAction func refreshList(_ sender: UIBarButtonItem) {
-        
         tableView.reloadData()
-        
     }
-    
-    
     
     @IBAction func addContent(_ sender: UIBarButtonItem) {
         
@@ -100,36 +77,85 @@ class ListViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
         tableView.reloadData()
-        
-        
+
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DiaryEntity")
+            if let contactFirstName = diaryentity[indexPath.row].otsikko {
+                let predicate = NSPredicate(format: "otsikko = %d",
+                                            argumentArray: [contactFirstName])
+                fetchRequest.predicate = predicate
+            }
+
+            do {
+                if let contacts = try coreDataStack.managedContext.fetch(fetchRequest) as? [DiaryEntity],
+                    let selectedContact = contacts.first {
+                    performSegue(withIdentifier: "showDetailView", sender: selectedContact)
+                }
+            } catch {
+                print("No contacts found")
+            }
+    }
     
     // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        
-        // Determine what the segue destination is
-        if segue.destination is DiaryDetailViewController {
-            let vc = segue.destination as? DiaryDetailViewController
-            vc?.username = "Arthur Dent 22"
+    
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  
+            if segue.identifier == "showDetailView" {
+                        if let nextVC = segue.destination as? DiaryDetailViewController,
+                            let selectedContact = sender as? DiaryEntity {
+                            nextVC.selectedContact = selectedContact
+                            nextVC.username = "Pööadsadsad"
+                        }
+            }
+            
+//            if segue.destination is DiaryDetailViewController {
+//                let destination = segue.destination as? DiaryDetailViewController
+//                destination?.username = "Arthur Dent 22"
+//                //destination?.otsikkoName = "This is otsikko!!!"
+//                destination?.otsikkoName = "This is otsikko!!!"
+//                //destination?.otsikkoName = paivanMuotoilu.string(from: showDateinList)
+//            }
+            
+//            switch segue.identifier! {
+//               case "MyShowDetailSegue":
+//                let destination : DiaryDetailViewController = segue.destination as! DiaryDetailViewController
+//
+//                   //destinationController.delegate = self // you will need this if you're using a delegate to make updates back in the original controller
+//
+//                destination?.otsikko = otsikko
+//
+//               default:
+//                   break
+//            }
+            
+    
         }
-    }
+    
+
     
 
 } // End of Main class
 
 
+
+
+
 // MARK: - UITableViewDataSource
 extension ListViewController: UITableViewDataSource {
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return diaryentity.count
-//    let objects = notes.fetchedObjects
-//    return objects?.count ?? 0
-  }
+    // MARK: TONI TEMP
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return diaryentity.count
+    //    let objects = notes.fetchedObjects
+    //    return objects?.count ?? 0
+    }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -140,6 +166,9 @@ extension ListViewController: UITableViewDataSource {
         return cell
     }
     
+    //let employee = fetchedResultController.object(at: indexPath)
+    
+    //cell.textLabel?.text = employee.otsikko
     cell.textLabel?.text = diaryentity[indexPath.row].otsikko
     cell.detailTextLabel?.text = paivanMuotoilu.string(from: showDateinList)
     
@@ -169,26 +198,3 @@ extension ListViewController: UITableViewDataSource {
     
 } // End of Extensions 1
 
-// MARK: - NSFetchedResultsControllerDelegate
-extension ListViewController: NSFetchedResultsControllerDelegate {
-  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-  }
-
-  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-    let wrapIndexPath: (IndexPath?) -> [IndexPath] = { $0.map { [$0] } ?? [] }
-
-    switch type {
-    case .insert:
-      tableView.insertRows(at: wrapIndexPath(newIndexPath), with: .automatic)
-    case .delete:
-      tableView.deleteRows(at: wrapIndexPath(indexPath), with: .automatic)
-    case .update:
-      tableView.reloadRows(at: wrapIndexPath(indexPath), with: .none)
-    default:
-      break
-    }
-  }
-
-  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-  }
-}
