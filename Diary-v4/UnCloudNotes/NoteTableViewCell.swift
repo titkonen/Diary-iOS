@@ -8,6 +8,13 @@ class NoteTableViewCell: UITableViewCell {
       updateNoteInfo(note: note)
     }
   }
+  
+  lazy var paivanMuotoilu: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .medium
+    return formatter
+  }()
 
   // MARK: - IBOutlets
   @IBOutlet private var noteTitle: UILabel!
@@ -17,7 +24,15 @@ class NoteTableViewCell: UITableViewCell {
 // MARK: - Internal
 @objc extension NoteTableViewCell {
   func updateNoteInfo(note: Note) {
+    
+    guard let showDate = note as? Note,
+      let showDateinList = showDate.dateCreated as Date? else {
+        return
+    }
+    
     noteTitle.text = note.title
-    noteCreateDate.text = note.dateCreated.description
+//    noteCreateDate.text = note.dateCreated.description
+    noteCreateDate.text = paivanMuotoilu.string(from: showDateinList)
+    
   }
 }
