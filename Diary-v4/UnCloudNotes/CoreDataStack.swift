@@ -17,7 +17,7 @@ class CoreDataStack {
     return storeContainer.newBackgroundContext()
   }
 
-  var storeName: String = "UnCloudNotesDataModel"
+  var storeName: String = "ViestitDataModel" ///"UnCloudNotesDataModel"
   var storeURL: URL {
     let storePaths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
     let storePath = storePaths[0] as NSString

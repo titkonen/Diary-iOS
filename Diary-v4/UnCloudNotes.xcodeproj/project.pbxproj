@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FD37DD726DC9FE800C57317 /* ViestitDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0FD37DD526DC9FE800C57317 /* ViestitDataModel.xcdatamodeld */; };
 		22AFD4B61B5527B9002CE770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22AFD4B41B5527B9002CE770 /* LaunchScreen.storyboard */; };
 		279570D719827BC400F52BA9 /* ImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279570D619827BC400F52BA9 /* ImageTransformer.swift */; };
 		790FC6E4198439AD00B52A53 /* AttachPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FC6E3198439AD00B52A53 /* AttachPhotoViewController.swift */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0FD37DD426D8F4F900C57317 /* UnCloudNotesDataModel v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "UnCloudNotesDataModel v2.xcdatamodel"; sourceTree = "<group>"; };
+		0FD37DD626DC9FE800C57317 /* ViestitDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ViestitDataModel.xcdatamodel; sourceTree = "<group>"; };
 		22AFD4B51B5527B9002CE770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		279570D619827BC400F52BA9 /* ImageTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTransformer.swift; sourceTree = "<group>"; };
 		790FC6E3198439AD00B52A53 /* AttachPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachPhotoViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 				C7F78B92194E1FA900BAF550 /* UnCloudNotesDataModel.xcdatamodeld */,
 				C77E1E7C1947D6D700762492 /* AppDelegate.swift */,
 				C73DC121195148B500DFADAB /* CoreDataStack.swift */,
+				0FD37DD526DC9FE800C57317 /* ViestitDataModel.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -238,6 +242,7 @@
 				790FC6E4198439AD00B52A53 /* AttachPhotoViewController.swift in Sources */,
 				C7BBD86D194FFCDF00BDDB95 /* Note.swift in Sources */,
 				C71A68741948D2CB003A62E7 /* CreateNoteViewController.swift in Sources */,
+				0FD37DD726DC9FE800C57317 /* ViestitDataModel.xcdatamodeld in Sources */,
 				C7F78B91194E1F1300BAF550 /* NoteTableViewCell.swift in Sources */,
 				C77E1E7D1947D6D700762492 /* AppDelegate.swift in Sources */,
 				C73DC122195148B500DFADAB /* CoreDataStack.swift in Sources */,
@@ -441,12 +446,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		0FD37DD526DC9FE800C57317 /* ViestitDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0FD37DD626DC9FE800C57317 /* ViestitDataModel.xcdatamodel */,
+			);
+			currentVersion = 0FD37DD626DC9FE800C57317 /* ViestitDataModel.xcdatamodel */;
+			path = ViestitDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		C7F78B92194E1FA900BAF550 /* UnCloudNotesDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0FD37DD426D8F4F900C57317 /* UnCloudNotesDataModel v2.xcdatamodel */,
 				C7F78B93194E1FA900BAF550 /* UnCloudNotesDataModel.xcdatamodel */,
 			);
-			currentVersion = C7F78B93194E1FA900BAF550 /* UnCloudNotesDataModel.xcdatamodel */;
+			currentVersion = 0FD37DD426D8F4F900C57317 /* UnCloudNotesDataModel v2.xcdatamodel */;
 			path = UnCloudNotesDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

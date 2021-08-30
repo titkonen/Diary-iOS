@@ -4,12 +4,12 @@ import CoreData
 class NotesListViewController: UITableViewController {
   
   // MARK: - Properties
-  private lazy var stack = CoreDataStack(modelName: "UnCloudNotesDataModel")
+  private lazy var stack = CoreDataStack(modelName: "ViestitDataModel")
 
-  private lazy var notes: NSFetchedResultsController<Note> = {
+  private lazy var notes: NSFetchedResultsController<ViestitEntity> = {
     let context = self.stack.managedContext
-    let request: NSFetchRequest<Note> = Note.fetchRequest()
-    request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Note.dateCreated), ascending: false)]
+    let request: NSFetchRequest<ViestitEntity> = ViestitEntity.fetchRequest()
+    request.sortDescriptors = [NSSortDescriptor(key: #keyPath(ViestitEntity.paivamaara), ascending: false)]
 
     let notes = NSFetchedResultsController(
       fetchRequest: request,
@@ -20,8 +20,8 @@ class NotesListViewController: UITableViewController {
     return notes
   }()
   
-  var noteEntity = [Note]()
-  var fetchedResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController()
+  var noteEntity = [ViestitEntity]()
+  var fetchedResultsController: NSFetchedResultsController<ViestitEntity> = NSFetchedResultsController()
 
   // MARK: - View Life Cycle
   override func viewWillAppear(_ animated: Bool) {
@@ -70,10 +70,27 @@ extension NotesListViewController {
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //swiftlint:disable:next force_cast
-    let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
-    cell.note = notes.object(at: indexPath)
-    return cell
+    
+    let note = notes.object(at: indexPath)
+    let cell: NoteTableViewCell
+     if note.valokuva == nil {
+       cell = tableView.dequeueReusableCell(
+         withIdentifier: "NoteCell",
+         for: indexPath
+       ) as! NoteTableViewCell
+     } else {
+       cell = tableView.dequeueReusableCell(
+         withIdentifier: "NoteCellWithImage",
+         for: indexPath
+       ) as! NoteImageTableViewCell
+     }
+
+     cell.note = note
+     return cell
+    
+//    let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
+//    cell.note = notes.object(at: indexPath)
+//    return cell
   }
   
   // MARK: DELETING

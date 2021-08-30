@@ -1,13 +1,13 @@
 import UIKit
 
-protocol NoteDisplayable: class {
-  var note: Note? { get set }
+protocol NoteDisplayable: AnyObject {
+  var note: ViestitEntity? { get set }
 }
 
 class NoteDetailViewController: UIViewController, NoteDisplayable {
   
   // MARK: - Properties
-  var note: Note? {
+  var note: ViestitEntity? {
     didSet {
       updateNoteInfo()
     }
@@ -40,15 +40,15 @@ extension NoteDetailViewController {
         return
     }
     
-    guard let showDate = note as? Note,
-      let showDateinList = showDate.dateCreated as Date? else {
+    guard let showDate = note as? ViestitEntity,
+      let showDateinList = showDate.paivamaara as Date? else {
         return
     }
     
     
 
-    titleField.text = note.title
-    bodyField.text = note.body
+    titleField.text = note.otsikko
+    bodyField.text = note.leipis
     dateField.text = paivanMuotoilu.string(from: showDateinList)
     //noteCreateDate.text = note.dateCreated.description
   }

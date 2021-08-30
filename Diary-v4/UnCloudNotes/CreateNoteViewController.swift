@@ -2,11 +2,12 @@ import UIKit
 import CoreData
 
 class CreateNoteViewController: UIViewController, UsesCoreDataObjects {
+  
   // MARK: - Properties
   var managedObjectContext: NSManagedObjectContext?
-  lazy var note: Note? = {
+  lazy var note: ViestitEntity? = {
     guard let context = self.managedObjectContext else { return nil }
-    return Note(context: context)
+    return ViestitEntity(context: context)
   }()
 
   // MARK: - IBOutlets
@@ -18,7 +19,16 @@ class CreateNoteViewController: UIViewController, UsesCoreDataObjects {
   // MARK: - View Life Cycle
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    titleField.becomeFirstResponder()
+    
+    // This will display the new image if the user has added one to the note.
+    guard let image = note?.valokuva else {
+      titleField.becomeFirstResponder()
+      return
+    }
+
+    attachedPhoto.image = image
+    view.endEditing(true)
+    
   }
 
   // MARK: - Navigation
@@ -38,8 +48,8 @@ extension CreateNoteViewController {
     }
 
     managedObjectContext.performAndWait {
-      note.title = titleField.text ?? ""
-      note.body = bodyField.text ?? ""
+      note.otsikko = titleField.text ?? ""
+      note.leipis = bodyField.text ?? ""
 
       do {
         try managedObjectContext.save()

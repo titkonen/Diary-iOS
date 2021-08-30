@@ -1,8 +1,9 @@
 import UIKit
 
 class NoteTableViewCell: UITableViewCell {
+  
   // MARK: - Properties
-  var note: Note? {
+  var note: ViestitEntity? {
     didSet {
       guard let note = note else { return }
       updateNoteInfo(note: note)
@@ -23,14 +24,14 @@ class NoteTableViewCell: UITableViewCell {
 
 // MARK: - Internal
 @objc extension NoteTableViewCell {
-  func updateNoteInfo(note: Note) {
+  func updateNoteInfo(note: ViestitEntity) {
     
-    guard let showDate = note as? Note,
-      let showDateinList = showDate.dateCreated as Date? else {
+    guard let showDate = note as? ViestitEntity,
+      let showDateinList = showDate.paivamaara as Date? else {
         return
     }
     
-    noteTitle.text = note.title
+    noteTitle.text = note.otsikko
 //    noteCreateDate.text = note.dateCreated.description
     noteCreateDate.text = paivanMuotoilu.string(from: showDateinList)
     

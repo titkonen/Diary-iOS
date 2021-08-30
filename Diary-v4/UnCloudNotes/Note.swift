@@ -2,19 +2,20 @@ import Foundation
 import CoreData
 import UIKit
 
-class Note: NSManagedObject {
-  @NSManaged var title: String
-  @NSManaged var body: String
-  @NSManaged var dateCreated: Date!
-  @NSManaged var displayIndex: NSNumber!
+class ViestitEntity: NSManagedObject {
+  @NSManaged var otsikko: String
+  @NSManaged var leipis: String
+  @NSManaged var paivamaara: Date!
+  @NSManaged var luku: NSNumber!
+  @NSManaged var valokuva: UIImage?
   
   override func awakeFromInsert() {
     super.awakeFromInsert()
-    dateCreated = Date()
+    paivamaara = Date()
   }
   
   @nonobjc
-  public class func fetchRequest() -> NSFetchRequest<Note> {
-    return NSFetchRequest<Note>(entityName: "Note")
+  public class func fetchRequest() -> NSFetchRequest<ViestitEntity> {
+    return NSFetchRequest<ViestitEntity>(entityName: "ViestitEntity")
   }
 }
